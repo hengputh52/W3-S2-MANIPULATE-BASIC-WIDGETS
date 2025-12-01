@@ -40,30 +40,24 @@ class ListExpense extends StatelessWidget {
     
     return ListView.builder(
       itemCount: items.length,
-      itemBuilder: (context, index) => ExpenseItem(
-        itemName: items[index].itemName,
-        price: items[index].price,
-        category: items[index].category,
-        dateTime: items[index].date,
-        
-      ),
+      itemBuilder: (context, index)
+      {
+        print('Builidng item ${index + 1}');
+      
+        return ExpenseItem(item: items[index]);
+      },
+      );
       //print('item $index');
-    );
+  
   }
 }
 
 class ExpenseItem extends StatelessWidget {
-  final String itemName;
-  final double price;
-  final IconData category;
-  final DateTime dateTime;
+  final Item item;
 
   const ExpenseItem({
     super.key,
-    required this.itemName,
-    required this.price,
-    required this.category,
-    required this.dateTime,
+    required this.item
   });
 
   @override
@@ -83,17 +77,17 @@ class ExpenseItem extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(itemName),
-                Text('Price: \$$price'),
+                Text(item.itemName),
+                Text('Price: \$${item.price}'),
               ],
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(category),
+                Icon(item.category),
                 const SizedBox(width: 10),
                 // Use format.format() to display the date nicely
-                Text(format.format(dateTime)),
+                Text(format.format(item.date)),
               ],
             )
           ],
