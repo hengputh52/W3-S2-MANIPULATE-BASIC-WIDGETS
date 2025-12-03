@@ -26,7 +26,7 @@ class _QuizscreenState extends State<Quizscreen> {
 
     if (isLastQuestion) {
       // Go to result screen
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => Resultscreen(quiz: widget.quiz),

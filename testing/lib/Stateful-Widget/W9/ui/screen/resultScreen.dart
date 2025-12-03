@@ -71,12 +71,12 @@ class Resultscreen extends StatelessWidget {
               PrimaryButton(
                 text: 'Restart Quiz',
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const Startquiz(),
                     ),
-                    (route) => false,
+                    
                   );
                 },
                 
