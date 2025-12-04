@@ -57,7 +57,7 @@ class Resultscreen extends StatelessWidget {
                     final question = answer.question;
                     final isCorrect = answer.isCorrect();
 
-                    return _buildQuestionResult(
+                    return buildQuestionResult(
                       questionNumber: index + 1,
                       question: question,
                       userAnswer: answer.answerChoice,
@@ -88,7 +88,7 @@ class Resultscreen extends StatelessWidget {
     );
   }
 
-  Widget _buildQuestionResult({
+  Widget buildQuestionResult({
     required int questionNumber,
     required Question question,
     required String userAnswer,
