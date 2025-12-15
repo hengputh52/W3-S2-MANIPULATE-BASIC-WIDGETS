@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../models/expense.dart';
-import '../../data/expenseData.dart';
+
+
+final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
 
 class ExpensesView extends StatefulWidget {
-  const ExpensesView({super.key});
+  final List<Expense> expenses ;
+  const ExpensesView({super.key ,required this.expenses});
 
   @override
   State<ExpensesView> createState() {
@@ -19,16 +23,15 @@ class _ExpensesViewState extends State<ExpensesView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: expenses.length,
-      itemBuilder: (context, index) => ExpenseItem(expense: expenses[index]),
+      itemCount: widget.expenses.length,
+      itemBuilder: (context, index) => ExpenseItem(expense: widget.expenses[index]),
     );
   }
 }
 
 class ExpenseItem extends StatelessWidget {
-  const ExpenseItem({super.key, required this.expense});
-
   final Expense expense;
+  const ExpenseItem({super.key, required this.expense});
 
   IconData get expenseIcon {
     switch (expense.category) {
@@ -44,7 +47,7 @@ class ExpenseItem extends StatelessWidget {
   }
 
   String get expenseDate {
-    return "11/54/25";
+    return dateFormat.format(expense.date);
   }
 
   @override
@@ -63,16 +66,19 @@ class ExpenseItem extends StatelessWidget {
                     expense.title,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text("${expense.amount.toStringAsPrecision(2)} \$"),
+                  Text("${expense.amount.toStringAsFixed(2)} \$"),
                 ],
               ),
               Spacer(),
               Row(children: [Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Icon(expenseIcon),
-              ), Text(expenseDate)]),
+              ), Text(expenseDate),
             ],
           ),
+        ]
+        ),
+        
         ),
       ),
     );
