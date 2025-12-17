@@ -54,7 +54,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     });
 
     // Clear any existing snackbar before showing new one
-    ScaffoldMessenger.of(context).clearSnackBars();
+    //ScaffoldMessenger.of(context).clearSnackBars();
 
     // Show snackbar with undo option
     ScaffoldMessenger.of(context).showSnackBar(
