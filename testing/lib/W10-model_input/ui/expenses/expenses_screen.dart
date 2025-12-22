@@ -104,7 +104,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
               _removeExpense(index);
               
             });
-            
+
           },
           child: ExpenseItem(expense: _expenses[index])
           ),

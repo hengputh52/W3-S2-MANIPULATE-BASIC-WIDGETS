@@ -105,6 +105,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
               }
             },
           ),
+          Spacer(),
            ElevatedButton(onPressed: onCancel, child: Text("Cancel")),
            SizedBox(height: 10),
           ElevatedButton(onPressed: onCreate, child: Text("Create")),
